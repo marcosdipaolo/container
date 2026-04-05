@@ -1,13 +1,23 @@
 {
     "name": "marcosdipaolo/container",
+    "description": "A production-ready PSR-11 dependency injection container with automatic wiring, lifecycle management, and circular dependency detection.",
     "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "psr-11",
+        "dependency-injection",
+        "container",
+        "di",
+        "ioc"
+    ],
     "authors": [
         {
             "name": "Marcos Di Paolo",
-            "email": "mdarcosdipaolo@gmail.com"
+            "email": "marcosdipaolo@gmail.com"
         }
     ],
     "require": {
+        "php": "^8.2",
         "psr/container": "^2.0"
     },
     "autoload": {
@@ -15,7 +25,26 @@
             "MDP\\Container\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "MDP\\Container\\Tests\\": "tests/"
+        }
+    },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.89"
-    }
+        "friendsofphp/php-cs-fixer": "^3.89",
+        "phpunit/phpunit": "^11.0",
+        "phpstan/phpstan": "^1.10",
+        "rector/rector": "^0.18",
+        "phpstan/phpstan-strict-rules": "^1.5"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-html coverage",
+        "lint": "php-cs-fixer fix --dry-run --diff",
+        "lint:fix": "php-cs-fixer fix",
+        "phpstan": "phpstan analyse src --level max",
+        "rector:check": "rector process src --dry-run",
+        "rector:fix": "rector process src"
+    },
+    "minimum-stability": "stable"
 }

@@ -12,5 +12,3 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->phpVersion(82);
 };
-
-
